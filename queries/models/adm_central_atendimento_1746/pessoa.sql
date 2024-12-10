@@ -70,5 +70,5 @@ SELECT
     SAFE_CAST(
         REGEXP_REPLACE(ds_atividade_profissional, r'\.0$', '') AS STRING
     ) atividade_profissional
-from
-    tb_pessoa
+FROM
+    `rj-segovi.adm_central_atendimento_1746_staging.pessoa`
