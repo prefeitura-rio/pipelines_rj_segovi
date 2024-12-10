@@ -15,6 +15,6 @@ SELECT
     ) id_chamado,
     SAFE_CAST(
         REGEXP_REPLACE(id_pessoa_fk, r'\.0$', '') AS INT64
-    ) id_pessoa,
+    ) id_pessoa
 FROM `rj-segovi.adm_central_atendimento_1746_staging.chamado_pessoa`
 WHERE id_pessoa_fk IS NOT NULL
