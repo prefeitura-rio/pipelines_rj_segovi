@@ -292,7 +292,9 @@ _1746_queries = {
     "chamado": {
         "dataset_id": "adm_central_atendimento_1746",
         "partition_columns": "dt_inicio",
-        "lower_bound_date": "2021-01-01",
+        "break_query_frequency": "month",
+        "break_query_start": "2021-01-01",
+        "break_query_end": "current_month",
         "materialize_after_dump": True,
         "materialization_mode": "prod",
         "materialize_to_datario": True,
@@ -312,7 +314,7 @@ _1746_clocks = generate_dump_db_schedules(
     db_port="1433",
     db_type="sql_server",
     dataset_id="adm_central_atendimento_1746",
-    vault_secret_path="clustersql2",
+    infisical_secret_path="/db-1746",
     table_parameters=_1746_queries,
 )
 
