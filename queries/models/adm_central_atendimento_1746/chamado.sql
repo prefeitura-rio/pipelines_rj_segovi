@@ -14,11 +14,11 @@ WITH chamados AS (
     -- Elimina linhas duplicadas
     SELECT * FROM (
         -- Alguns ds_endereco_numero vem no formato "15,17,19" e selecionamos o primeiro que aparece
-        SELECT 
+        SELECT
             * EXCEPT(ds_endereco_numero),
             CASE WHEN REGEXP_CONTAINS(CAST(ds_endereco_numero AS STRING), ",") THEN SPLIT(CAST(ds_endereco_numero AS STRING), ',')[SAFE_OFFSET(0)] ELSE ds_endereco_numero END AS ds_endereco_numero,
             row_number() OVER (PARTITION BY id_chamado ORDER BY dt_fim DESC, data_particao DESC) AS ranking
-        FROM `rj-segovi.adm_central_atendimento_1746_staging.chamado` 
+        FROM `rj-segovi.adm_central_atendimento_1746_staging.chamado`
 
         -- {% if is_incremental() %}
 
@@ -33,13 +33,13 @@ WITH chamados AS (
 enderecos_geolocalizados AS (
     -- Elimina linhas duplicadas
     SELECT * FROM (
-        SELECT 
+        SELECT
             *,
             row_number() OVER (PARTITION BY id_logradouro, SAFE_CAST(SAFE_CAST(numero_porta AS FLOAT64) AS STRING) ) AS ranking
         FROM `rj-escritorio-dev.dados_mestres.enderecos_geolocalizados`
         WHERE numero_porta IS NOT NULL
     )
-    WHERE ranking=1    
+    WHERE ranking=1
 )
 
 SELECT DISTINCT
@@ -109,6 +109,6 @@ SELECT DISTINCT
     SAFE_CAST(ch.ds_chamado AS STRING) descricao,
     SAFE_CAST(DATE_TRUNC(DATE(ch.data_particao), month) AS DATE) data_particao,
     FROM chamados ch
-    LEFT JOIN enderecos_geolocalizados geo 
+    LEFT JOIN enderecos_geolocalizados geo
         ON SAFE_CAST(ch.id_logradouro AS FLOAT64) = CAST(geo.id_logradouro AS FLOAT64)
         AND SAFE_CAST(ch.ds_endereco_numero AS FLOAT64) = cast(geo.numero_porta as FLOAT64)

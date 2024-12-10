@@ -9,7 +9,7 @@
     )
 }}
 
-SELECT 
+SELECT
     SAFE_CAST(
         REGEXP_REPLACE(id_chamado, r'\.0$', '') AS STRING
     ) id_chamado,
