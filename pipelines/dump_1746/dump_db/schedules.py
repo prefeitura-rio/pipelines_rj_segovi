@@ -297,8 +297,8 @@ _1746_queries = {
         "break_query_end": "current_month",
         "materialize_after_dump": True,
         "materialization_mode": "prod",
-        "materialize_to_datario": False, # TODO: re-enable this in the future.
-        "dump_to_gcs": False, # TODO: re-enable this in the future.
+        "materialize_to_datario": False,  # TODO: re-enable this in the future.
+        "dump_to_gcs": False,  # TODO: re-enable this in the future.
         "dump_mode": "append",
         "execute_query": QUERY_CHAMADO_1746_DS,
     },
@@ -316,7 +316,7 @@ _1746_queries = {
                 id_pessoa_fk
             from
                 tb_chamado
-        """
+        """,
     },
     "pessoa": {
         "dataset_id": "adm_central_atendimento_1746",
@@ -350,8 +350,8 @@ _1746_queries = {
                 ds_atividade_profissional
             from
                 tb_pessoa
-        """
-    }
+        """,
+    },
 }
 _1746_clocks = generate_dump_db_schedules(
     interval=timedelta(days=1),
