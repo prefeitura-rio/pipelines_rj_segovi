@@ -2,4 +2,4 @@
 """
 Imports all flows for every project so we can register all of them.
 """
-from pipelines.exemplo import *  # noqa
+from pipelines.dump_1746 import *  # noqa

@@ -16,7 +16,8 @@ class constants(Enum):
     ######################################
     # Agent labels
     ######################################
-    # EXAMPLE_AGENT_LABEL = "example_agent"
+    RJ_SEGOVI_AGENT_LABEL = "segovi"
+    RJ_LOCAL_IPLAN_AGENT_LABEL = "local-iplan"
 
     ######################################
     # Other constants
