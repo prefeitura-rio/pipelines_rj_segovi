@@ -297,11 +297,61 @@ _1746_queries = {
         "break_query_end": "current_month",
         "materialize_after_dump": True,
         "materialization_mode": "prod",
-        "materialize_to_datario": True,
-        "dump_to_gcs": True,
+        "materialize_to_datario": False, # TODO: re-enable this in the future.
+        "dump_to_gcs": False, # TODO: re-enable this in the future.
         "dump_mode": "append",
         "execute_query": QUERY_CHAMADO_1746_DS,
     },
+    "chamado_pessoa": {
+        "dataset_id": "adm_central_atendimento_1746",
+        "partition_columns": "id_pessoa_fk",
+        "materialize_after_dump": True,
+        "materialization_mode": "prod",
+        "materialize_to_datario": False,
+        "dump_to_gcs": False,
+        "dump_mode": "overwrite",
+        "execute_query": """
+            select
+                id_chamado,
+                id_pessoa_fk
+            from
+                tb_chamado
+        """
+    },
+    "pessoa": {
+        "dataset_id": "adm_central_atendimento_1746",
+        "partition_columns": "id_pessoa",
+        "materialize_after_dump": True,
+        "materialization_mode": "prod",
+        "materialize_to_datario": False,
+        "dump_to_gcs": False,
+        "dump_mode": "overwrite",
+        "execute_query": """
+            select
+                id_pessoa,
+                no_pessoa,
+                ds_email,
+                ds_endereco,
+                ds_endereco_numero,
+                ds_endereco_cep,
+                ds_endereco_complemento,
+                ds_endereco_referencia,
+                ds_telefone_1,
+                ds_telefone_2,
+                ds_telefone_3,
+                dt_nascimento,
+                ic_sexo,
+                ds_cpf,
+                ds_identidade,
+                dt_insercao,
+                dt_atualizacao,
+                no_mae,
+                id_escolaridade_fk,
+                ds_atividade_profissional
+            from
+                tb_pessoa
+        """
+    }
 }
 _1746_clocks = generate_dump_db_schedules(
     interval=timedelta(days=1),
