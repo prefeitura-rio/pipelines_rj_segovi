@@ -8,7 +8,7 @@
 
 -- Full refresh or new rows for incremental runs
 with base_data as (
-    select 
+    select
         c.id_chamado,
         p.cpf,
         to_json_string(c) as data
@@ -17,7 +17,7 @@ with base_data as (
         on c.id_chamado = cp.id_chamado
     left join `rj-segovi.adm_central_atendimento_1746.pessoa` p
         on cp.id_pessoa = p.id_pessoa
-    where 
+    where
         c.id_chamado is not null
         and cp.id_pessoa is not null
         and p.cpf is not null
@@ -25,7 +25,7 @@ with base_data as (
 filtered_increment as (
     {% if is_incremental() %}
     -- Only add data not already in the target table
-    select * 
+    select *
     from base_data
     where id_chamado not in (
         select id_chamado
@@ -33,11 +33,11 @@ filtered_increment as (
     )
     {% else %}
     -- For full refreshes, include all rows
-    select * 
+    select *
     from base_data
     {% endif %}
 )
-select 
+select
     cpf,
     data
 from filtered_increment
