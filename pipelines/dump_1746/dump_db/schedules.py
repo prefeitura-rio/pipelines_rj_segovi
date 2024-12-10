@@ -304,7 +304,6 @@ _1746_queries = {
     },
     "chamado_pessoa": {
         "dataset_id": "adm_central_atendimento_1746",
-        "partition_columns": "id_pessoa_fk",
         "materialize_after_dump": True,
         "materialization_mode": "prod",
         "materialize_to_datario": False,
@@ -320,7 +319,6 @@ _1746_queries = {
     },
     "pessoa": {
         "dataset_id": "adm_central_atendimento_1746",
-        "partition_columns": "id_pessoa",
         "materialize_after_dump": True,
         "materialization_mode": "prod",
         "materialize_to_datario": False,
