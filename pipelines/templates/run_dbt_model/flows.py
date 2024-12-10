@@ -34,3 +34,5 @@ templates__run_dbt_model_smas__flow = set_default_parameters(
     templates__run_dbt_model_smas__flow,
     default_parameters=templates_run_dbt_model_smas_default_parameters,
 )
+
+# Comment in order to trigger register
