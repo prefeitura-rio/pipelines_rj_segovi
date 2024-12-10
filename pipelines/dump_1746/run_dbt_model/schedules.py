@@ -27,8 +27,8 @@ materialize_flow_schedule = Schedule(
                 "table_id": "chamado_cpf",
                 "upstream": None,
                 "mode": "prod",
-                "materialize_to_datario": False
-            }
+                "materialize_to_datario": False,
+            },
         )
     ]
 )

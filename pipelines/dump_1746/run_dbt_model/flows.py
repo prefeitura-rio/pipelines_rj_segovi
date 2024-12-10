@@ -14,10 +14,15 @@ from prefeitura_rio.pipelines_utils.state_handlers import (
 
 from pipelines.constants import constants
 from pipelines.dump_1746.run_dbt_model.schedules import materialize_flow_schedule
-from pipelines.templates.run_dbt_model.flows import templates__run_dbt_model__flow as materialize_flow
+from pipelines.templates.run_dbt_model.flows import (
+    templates__run_dbt_model__flow as materialize_flow,
+)
 
 materialize_only_1746_tables = deepcopy(materialize_flow)
-materialize_only_1746_tables.state_handlers = [handler_inject_bd_credentials, handler_initialize_sentry]
+materialize_only_1746_tables.state_handlers = [
+    handler_inject_bd_credentials,
+    handler_initialize_sentry,
+]
 materialize_only_1746_tables.name = "SEGOVI: 1746 - Materializar tabelas"
 materialize_only_1746_tables.storage = GCS(constants.GCS_FLOWS_BUCKET.value)
 materialize_only_1746_tables.run_config = KubernetesRun(
