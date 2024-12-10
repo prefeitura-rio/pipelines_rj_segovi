@@ -1,12 +1,12 @@
+-- TODO: add partitioning (int64 also requires range, https://docs.getdbt.com/reference/resource-configs/bigquery-configs)
+-- partition_by={
+--     "field": "id_pessoa",
+--     "data_type": "int64",
+-- }
 {{
     config(
         materialized='table',
         unique_key='id_chamado',
-        -- TODO: add partitioning (int64 also requires range, https://docs.getdbt.com/reference/resource-configs/bigquery-configs)
-        -- partition_by={
-        --     "field": "id_pessoa",
-        --     "data_type": "int64",
-        -- }
     )
 }}
 

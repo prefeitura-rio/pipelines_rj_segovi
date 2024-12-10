@@ -1,8 +1,8 @@
+-- TODO: can't partition by cpf because type string is not supported
+-- partition_by={"field": "cpf", "data_type": "string"},
 {{
     config(
         materialized='incremental',
-        -- TODO: can't partition by cpf because type string is not supported
-        -- partition_by={"field": "cpf", "data_type": "string"},
         unique_key='id_chamado'
     )
 }}
