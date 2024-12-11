@@ -5,12 +5,15 @@
     config(
         materialized='incremental',
         unique_key='id_chamado',
-        partition_by={"field": "cpf", "data_type": "int64"},
-        range={
-            "start": 0,
-            "end": 99999999999,
-            "interval": 2000000
-        }
+        partition_by={
+            "field": "cpf",
+            "data_type": "int64",
+            "range": {
+                "start": 0,
+                "end": 99999999999,
+                "interval": 2000000
+            }
+        },
     )
 }}
 
