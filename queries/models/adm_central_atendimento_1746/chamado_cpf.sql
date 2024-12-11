@@ -1,6 +1,3 @@
--- About the partitioning:
--- - Today there are about 8 billion people in the world and BigQuery supports up to 4,000 partitions per table.
--- - Thus, we take the interval to be 2 million.
 {{
     config(
         materialized='incremental',
@@ -11,7 +8,7 @@
             "range": {
                 "start": 0,
                 "end": 99999999999,
-                "interval": 2000000
+                "interval": 10000000
             }
         },
     )
