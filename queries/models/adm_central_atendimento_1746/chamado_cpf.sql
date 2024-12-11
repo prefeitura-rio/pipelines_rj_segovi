@@ -44,7 +44,7 @@ filtered_increment as (
     from base_data
     {% endif %}
 )
-select 
+select
     SAFE_CAST(cpf AS INT64) cpf,
     * except(cpf) -- Include all columns except duplicating cpf
 from filtered_increment
