@@ -4,7 +4,7 @@
 {{
     config(
         materialized='incremental',
-        unique_key='id_chamado'
+        unique_key='id_chamado',
         partition_by={"field": "cpf", "data_type": "int64"},
         range={
             "start": 0,
