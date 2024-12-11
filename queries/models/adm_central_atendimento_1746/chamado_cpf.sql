@@ -1,9 +1,16 @@
--- TODO: can't partition by cpf because type string is not supported
--- partition_by={"field": "cpf", "data_type": "string"},
+-- About the partitioning:
+-- - Today there are about 8 billion people in the world and BigQuery supports up to 4,000 partitions per table.
+-- - Thus, we take the interval to be 2 million.
 {{
     config(
         materialized='incremental',
         unique_key='id_chamado'
+        partition_by={"field": "cpf", "data_type": "int64"},
+        range={
+            "start": 0,
+            "end": 99999999999,
+            "interval": 2000000
+        }
     )
 }}
 
@@ -38,6 +45,6 @@ filtered_increment as (
     {% endif %}
 )
 select 
-    cpf,
+    SAFE_CAST(cpf AS INT64) cpf,
     * except(cpf) -- Include all columns except duplicating cpf
 from filtered_increment
