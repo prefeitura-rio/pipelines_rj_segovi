@@ -289,20 +289,20 @@ group by
         """
 
 _1746_queries = {
-    "chamado": {
-        "dataset_id": "adm_central_atendimento_1746",
-        "partition_columns": "dt_inicio",
-        "break_query_frequency": "month",
-        "break_query_start": "2021-01-01",
-        "break_query_end": "current_month",
-        "materialize_after_dump": True,
-        "materialization_mode": "prod",
-        "materialize_to_datario": False,  # TODO: re-enable this in the future.
-        "dump_to_gcs": False,  # TODO: re-enable this in the future.
-        "dump_mode": "append",
-        "execute_query": QUERY_CHAMADO_1746_DS,
-    },
-    "chamado_pessoa": {
+    # "chamado": {
+    #     "dataset_id": "adm_central_atendimento_1746",
+    #     "partition_columns": "dt_inicio",
+    #     "break_query_frequency": "month",
+    #     "break_query_start": "2021-01-01",
+    #     "break_query_end": "current_month",
+    #     "materialize_after_dump": True,
+    #     "materialization_mode": "prod",
+    #     "materialize_to_datario": False,  # TODO: re-enable this in the future.
+    #     "dump_to_gcs": False,  # TODO: re-enable this in the future.
+    #     "dump_mode": "append",
+    #     "execute_query": QUERY_CHAMADO_1746_DS,
+    # },
+    "chamado_cpf": {
         "dataset_id": "adm_central_atendimento_1746",
         "materialize_after_dump": True,
         "materialization_mode": "prod",
@@ -310,11 +310,30 @@ _1746_queries = {
         "dump_to_gcs": False,
         "dump_mode": "overwrite",
         "execute_query": """
-            select
-                id_chamado,
-                id_pessoa_fk
-            from
-                tb_chamado
+            SELECT 
+                pc.id_chamado_fk AS id_chamado,
+                CASE 
+                    WHEN p.ds_cpf IS NOT NULL THEN 
+                        REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(p.ds_cpf, '-', ''), '.', ''), '/', ''), '(', ''), ')', ''), ' ', ''), ',', ''), '+', ''), ';', '') 
+                    ELSE NULL 
+                END AS cpf
+            FROM tb_protocolo_chamado pc
+            LEFT JOIN tb_protocolo pr ON pc.id_protocolo_fk = pr.id_protocolo
+            LEFT JOIN tb_pessoa p ON pr.id_pessoa_fk = p.id_pessoa
+        """,
+    },
+    "origem_ocorrencia": {
+        "dataset_id": "adm_central_atendimento_1746",
+        "materialize_after_dump": True,
+        "materialization_mode": "prod",
+        "materialize_to_datario": False,
+        "dump_to_gcs": False,
+        "dump_mode": "overwrite",
+        "execute_query": """
+            SELECT
+                id_origem_ocorrencia,
+                no_origem_ocorrencia
+            FROM tb_origem_ocorrencia
         """,
     },
     "pessoa": {
