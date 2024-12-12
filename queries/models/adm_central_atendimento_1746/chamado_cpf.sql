@@ -2,15 +2,6 @@
     config(
         materialized='table',
         unique_key='id_chamado',
-        partition_by={
-            "field": "cpf_particao",
-            "data_type": "int64",
-            "range": {
-                "start": 0,
-                "end": 99999999999,
-                "interval": 10000000
-            }
-        },
     )
 }}
 
