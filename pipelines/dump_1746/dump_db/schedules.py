@@ -310,12 +310,12 @@ _1746_queries = {
         "dump_to_gcs": False,
         "dump_mode": "overwrite",
         "execute_query": """
-            SELECT 
+            SELECT
                 pc.id_chamado_fk AS id_chamado,
-                CASE 
-                    WHEN p.ds_cpf IS NOT NULL THEN 
-                        REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(p.ds_cpf, '-', ''), '.', ''), '/', ''), '(', ''), ')', ''), ' ', ''), ',', ''), '+', ''), ';', '') 
-                    ELSE NULL 
+                CASE
+                    WHEN p.ds_cpf IS NOT NULL THEN
+                        REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(p.ds_cpf, '-', ''), '.', ''), '/', ''), '(', ''), ')', ''), ' ', ''), ',', ''), '+', ''), ';', '')
+                    ELSE NULL
                 END AS cpf
             FROM tb_protocolo_chamado pc
             LEFT JOIN tb_protocolo pr ON pc.id_protocolo_fk = pr.id_protocolo
