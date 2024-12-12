@@ -8,7 +8,7 @@
             "range": {
                 "start": 0,
                 "end": 99999999999,
-                "interval": 10000000
+                "interval": 25000000
             }
         },
     )
