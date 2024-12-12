@@ -13,6 +13,7 @@ from prefeitura_rio.pipelines_utils.state_handlers import (
 )
 
 from pipelines.constants import constants
+
 # from pipelines.dump_1746.run_dbt_model.schedules import materialize_flow_schedule
 from pipelines.templates.run_dbt_model.flows import (
     templates__run_dbt_model__flow as materialize_flow,
