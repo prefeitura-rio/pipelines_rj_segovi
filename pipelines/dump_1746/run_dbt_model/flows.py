@@ -13,7 +13,7 @@ from prefeitura_rio.pipelines_utils.state_handlers import (
 )
 
 from pipelines.constants import constants
-from pipelines.dump_1746.run_dbt_model.schedules import materialize_flow_schedule
+# from pipelines.dump_1746.run_dbt_model.schedules import materialize_flow_schedule
 from pipelines.templates.run_dbt_model.flows import (
     templates__run_dbt_model__flow as materialize_flow,
 )
@@ -31,4 +31,4 @@ materialize_only_1746_tables.run_config = KubernetesRun(
         constants.RJ_SEGOVI_AGENT_LABEL.value,
     ],
 )
-materialize_only_1746_tables.schedule = materialize_flow_schedule
+# materialize_only_1746_tables.schedule = materialize_flow_schedule
