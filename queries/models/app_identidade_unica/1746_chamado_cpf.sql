@@ -36,8 +36,8 @@ chamado_cpf AS (
 )
 
 SELECT
-    c.cpf,
-    CAST(c.cpf AS INT64) AS cpf_particao,  -- For partitioning purposes
+    cc.cpf,
+    CAST(cc.cpf AS INT64) AS cpf_particao,  -- For partitioning purposes
     oo.no_origem_ocorrencia AS origem_ocorrencia,
     c.*
 FROM
