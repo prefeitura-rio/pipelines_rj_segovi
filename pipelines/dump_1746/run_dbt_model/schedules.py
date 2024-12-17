@@ -15,7 +15,7 @@ materialize_flow_schedule = Schedule(
             start_date=datetime(2020, 1, 1, 6, tzinfo=pytz.timezone("America/Sao_Paulo")),
             labels=[constants.RJ_SEGOVI_AGENT_LABEL.value],
             parameter_defaults={
-                "dataset_id": "adm_central_atendimento_1746",
+                "dataset_id": "app_identidade_unica",
                 "dbt_alias": False,
                 "dbt_model_parameters": {},
                 "dbt_model_secret_parameters": [],
@@ -24,7 +24,7 @@ materialize_flow_schedule = Schedule(
                 "exclude": None,
                 "flags": None,
                 "infisical_credential_dict": None,
-                "table_id": "chamado_cpf",
+                "table_id": "1746_chamado_cpf",
                 "upstream": None,
                 "mode": "prod",
                 "materialize_to_datario": False,
