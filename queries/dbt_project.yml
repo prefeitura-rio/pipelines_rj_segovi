@@ -24,3 +24,9 @@ models:
     example:
       +materialized: view
       +schema: example
+    adm_central_atendimento_1746:
+      +materialized: view # Materialization type (view, table or incremental)
+      +schema: adm_central_atendimento_1746 # Overrides the default schema (defaults to what is set on profiles.yml)
+    app_identidade_unica:
+      +materialized: view
+      +schema: app_identidade_unica
