@@ -200,7 +200,7 @@ from
                                         WHEN vuo.ID_N0 <> 0 THEN vuo.ID_N0 END
 where
     uo.id_instituicao_fk = 3
-    and id_categoria in (2)
+    and id_categoria in (2,4,6,7)
 group by
     ch.id_chamado,
     ch.ds_chamado,
