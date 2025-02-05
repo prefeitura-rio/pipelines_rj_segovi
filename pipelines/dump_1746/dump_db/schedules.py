@@ -289,19 +289,19 @@ group by
         """
 
 _1746_queries = {
-    # "chamado": {
-    #     "dataset_id": "adm_central_atendimento_1746",
-    #     "partition_columns": "dt_inicio",
-    #     "break_query_frequency": "month",
-    #     "break_query_start": "2021-01-01",
-    #     "break_query_end": "current_month",
-    #     "materialize_after_dump": True,
-    #     "materialization_mode": "prod",
-    #     "materialize_to_datario": False,  # TODO: re-enable this in the future.
-    #     "dump_to_gcs": False,  # TODO: re-enable this in the future.
-    #     "dump_mode": "append",
-    #     "execute_query": QUERY_CHAMADO_1746_DS,
-    # },
+    "chamado": {
+        "dataset_id": "adm_central_atendimento_1746",
+        "partition_columns": "dt_inicio",
+        "break_query_frequency": "month",
+        "break_query_start": "2021-01-01",
+        "break_query_end": "current_month",
+        "materialize_after_dump": True,
+        "materialization_mode": "prod",
+        "materialize_to_datario": False,  # TODO: re-enable this in the future.
+        "dump_to_gcs": False,  # TODO: re-enable this in the future.
+        "dump_mode": "append",
+        "execute_query": QUERY_CHAMADO_1746_DS,
+    },
     "chamado_cpf": {
         "dataset_id": "adm_central_atendimento_1746",
         "materialize_after_dump": True,
