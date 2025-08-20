@@ -47,4 +47,4 @@ dump_sql_ergon_flow = set_default_parameters(
     dump_sql_ergon_flow, default_parameters=ergon_default_parameters
 )
 
-dump_sql_ergon_flow.schedule = _1746_daily_update_schedule
+# dump_sql_ergon_flow.schedule = _1746_daily_update_schedule
